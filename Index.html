@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Discord Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2C2F33;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #23272A;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #7289DA;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5B6EAE;
+        }
+        .error {
+            color: #FF0000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login to Discord</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button id="loginButton">Login</button>
+    <div class="error" id="errorMessage"></div>
+</div>
+
+<script>
+    // Function to handle login button click
+    document.getElementById('loginButton').addEventListener('click', function() {
+        // Get the values from the input fields
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Clear previous error messages
+        errorMessage.textContent = '';
+
+        // Simple validation for demonstration purposes
+        if (username === '' || password === '') {
+            errorMessage.textContent = 'Please fill in both fields.';
+            return;
+        }
+
+        // Simulate a login process (this is just a mock, no real authentication)
+        if (username === 'user' && password === 'pass') {
+            alert('Login successful!');
+            // Redirect or perform further actions here
+        } else {
+            errorMessage.textContent = 'Invalid username or password.';
+        }
+    });
+</script>
+
+</body>
+</html>
