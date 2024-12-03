@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input and Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Input and Password Generator</h1>
+    <label for="username">Enter a username:</label>
+    <input type="text" id="username" placeholder="Type a username...">
+    
+    <button id="generate">Generate Gmail and Password</button>
+    
+    <h2>Generated Information:</h2>
+    <p id="gmail"></p>
+    <p id="password"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+function generatePassword(length) {
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+    }
+    return password;
+}
+
+function generateGmail(username) {
+    return `${username.toLowerCase().replace(/\s+/g, '')}@gmail.com`;
+}
+
+document.getElementById('generate').addEventListener('click', () => {
+    const username = document.getElementById('username').value.trim();
+    
+    if (username) {
+        const gmail = generateGmail(username);
+        const password = generatePassword(12); // Generate a 12-character password
+        
+        // Display the generated Gmail and password
+        document.getElementById('gmail').textContent = `Generated Gmail: ${gmail}`;
+        document.getElementById('password').textContent = `Generated Password: ${password}`;
+    } else {
+        alert("Please enter a username.");
+    }
+});
