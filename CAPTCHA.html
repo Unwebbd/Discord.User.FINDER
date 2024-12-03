@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock CAPTCHA Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #captcha-container {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #captcha-message {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="verify-button">Verify if you're not a bot</button>
+
+    <div id="captcha-container">
+        <div id="captcha-message">Please complete the CAPTCHA to continue.</div>
+        <button id="captcha-verify">I'm not a bot</button>
+    </div>
+
+    <script>
+        // Get references to the DOM elements
+        const verifyButton = document.getElementById('verify-button');
+        const captchaContainer = document.getElementById('captcha-container');
+        const captchaVerifyButton = document.getElementById('captcha-verify');
+
+        // Function to show the CAPTCHA container
+        function showCaptcha() {
+            captchaContainer.style.display = 'block';
+        }
+
+        // Function to handle CAPTCHA verification
+        function handleCaptchaVerification() {
+            // Simulate a delay for CAPTCHA verification
+            setTimeout(() => {
+                // Redirect to the specified website after verification
+                window.location.href = 'https://www.example.com'; // Change to your desired URL
+            }, 1000); // 1 second delay to simulate processing time
+        }
+
+        // Event listener for the verify button
+        verifyButton.addEventListener('click', showCaptcha);
+
+        // Event listener for the CAPTCHA verify button
+        captchaVerifyButton.addEventListener('click', handleCaptchaVerification);
+    </script>
+
+</body>
+</html>
